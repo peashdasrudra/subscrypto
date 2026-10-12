@@ -100,13 +100,70 @@ npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 6. Production Build
+### 6. Production Build & Health Check
 ```bash
 npm run build
 npm run start
 ```
+Test health status at: [http://localhost:3000/api/health](http://localhost:3000/api/health)
 
 ---
+
+## ☁️ Cloud Deployment Guide (GitHub + Vercel + Supabase)
+
+### 1. Push to GitHub
+The local Git repository is initialized and committed on `main`. To push to your GitHub repository:
+```bash
+git push -u origin main
+```
+> **Note:** If prompted by Git Credential Manager, complete your GitHub sign-in in your browser or supply your GitHub Personal Access Token (PAT).
+
+### 2. Supabase Cloud Setup (Database)
+1. Go to [supabase.com](https://supabase.com) and sign in or create a free project.
+2. Navigate to **SQL Editor** in the left sidebar.
+3. Open `supabase/migrations/001_create_orders.sql` from this repository, paste the entire SQL code, and click **Run**.
+   - This creates the `orders` table with UUID primary keys.
+   - Configures status checks (`PENDING_REVIEW`, `PAYMENT_CONFIRMED`, `COMPLETED`, etc.).
+   - Establishes Row-Level Security (RLS) allowing anonymous order creation and receipt lookup by reference.
+   - Sets up auto-updating timestamps.
+4. Go to **Project Settings** -> **API** and copy:
+   - **Project URL** -> `NEXT_PUBLIC_SUPABASE_URL`
+   - **Project API Keys (anon public)** -> `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - **Project API Keys (service_role)** -> `SUPABASE_SERVICE_ROLE_KEY`
+
+### 3. Deploy to Vercel
+1. Log in to [vercel.com](https://vercel.com).
+2. Click **Add New...** -> **Project**.
+3. Import your GitHub repository (`peashdasrudra/subscrypto`).
+4. In the **Environment Variables** section, add:
+   | Variable | Value | Description |
+   |---|---|---|
+   | `NEXT_PUBLIC_SITE_URL` | `https://your-vercel-domain.vercel.app` | Production public URL |
+   | `NEXT_PUBLIC_SUPABASE_URL` | `https://your-id.supabase.co` | Your Supabase project URL |
+   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJh...` | Supabase Anon Public Key |
+   | `SUPABASE_SERVICE_ROLE_KEY` | `eyJh...` | Supabase Service Role Key |
+   | `PAYMENT_RECIPIENT_NUMBER` | `01533679773` | bKash/Nagad/Rocket number |
+   | `OFFER_PRICE_BDT` | `349` | Student offer price in BDT |
+   | `OFFER_DURATION_MONTHS` | `18` | Subscription duration |
+   | `ORDER_NOTIFICATION_EMAIL` | `admin@example.com` | Notification recipient (optional) |
+   | `RESEND_API_KEY` | `re_...` | Resend API key for automated emails (optional) |
+5. Click **Deploy**. Vercel will build and deploy your application with serverless Next.js edge support.
+
+### 4. Verify Live Cloud Health
+Once deployed, verify your deployment:
+- Open `https://your-domain.vercel.app/api/health`
+- It will return:
+  ```json
+  {
+    "status": "ok",
+    "environment": "production",
+    "database": {
+      "configured": true,
+      "status": "connected",
+      "latencyMs": 42
+    }
+  }
+  ```
 
 ## 🔒 Security & Data Privacy
 
