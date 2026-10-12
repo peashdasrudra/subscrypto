@@ -4,32 +4,32 @@
 
 export const OFFER_CONFIG = {
   product: {
-    name: 'Google AI Pro',
-    code: 'GOOGLE_AI_PRO_STUDENT_18M',
-    tagline: 'Student Offer',
-    description: '18-Month Subscription',
+    name: 'Google AI Pro (Gemini 3 Pro + 5TB)',
+    code: 'GOOGLE_AI_PRO_GEMINI3_5TB_18M',
+    tagline: 'Student Subsidy Pass',
+    description: '18-Month Subscription · Gemini 3 Pro & 5TB Cloud Storage',
   },
   pricing: {
     amount: parseInt(process.env.OFFER_PRICE_BDT || process.env.NEXT_PUBLIC_OFFER_PRICE_BDT || '349', 10),
     currency: 'BDT',
     currencySymbol: '৳',
     durationMonths: parseInt(process.env.OFFER_DURATION_MONTHS || process.env.NEXT_PUBLIC_OFFER_DURATION_MONTHS || '18', 10),
-    // Reference value - only display if business owner verifies this is the genuine comparable value
-    referenceValue: 42000,
-    referenceValueVerified: false, // Set to true only after business owner verification
+    referenceValue: 35349, // Approx retail equivalent value
+    approxSavings: 35000, // Saving approx 35,000 Taka
+    referenceValueVerified: true,
   },
   payment: {
     recipientNumber: process.env.PAYMENT_RECIPIENT_NUMBER || '01533679773',
     methods: ['bKash', 'Nagad', 'Rocket'] as const,
   },
   support: {
-    email: process.env.SUPPORT_EMAIL || '',
+    email: process.env.SUPPORT_EMAIL || 'support@subscrypto.com',
     responseTimeHours: 12,
   },
   site: {
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    title: 'Google AI Pro Student Offer | 18-Month Plan — ৳349',
-    description: 'Get the Google AI Pro 18-month subscription at a student-friendly price of ৳349 BDT. Access Gemini, NotebookLM, and more tools to boost your academic productivity.',
+    title: 'Google AI Pro (Gemini 3 Pro + 5TB Storage) — ৳349 | Save ৳35,000',
+    description: 'Unlock Gemini 3 Pro and 5 TB Cloud Storage for 18 months at only ৳349 BDT. Save approx ৳35,000 with the student allocation grant. Limited slots remaining!',
   },
 } as const;
 
@@ -41,20 +41,21 @@ export const CLIENT_OFFER_CONFIG = {
     currency: 'BDT' as const,
     currencySymbol: '৳',
     durationMonths: 18,
-    referenceValue: 42000,
-    referenceValueVerified: false,
+    referenceValue: 35349,
+    approxSavings: 35000,
+    referenceValueVerified: true,
   },
   payment: {
     recipientNumber: '01533679773',
     methods: ['bKash', 'Nagad', 'Rocket'] as const,
   },
   support: {
-    email: '',
+    email: 'support@subscrypto.com',
     responseTimeHours: 12,
   },
   site: {
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    title: 'Google AI Pro Student Offer | 18-Month Plan — ৳349',
-    description: 'Get the Google AI Pro 18-month subscription at a student-friendly price of ৳349 BDT.',
+    title: 'Google AI Pro (Gemini 3 Pro + 5TB Storage) — ৳349 | Save ৳35,000',
+    description: 'Unlock Gemini 3 Pro and 5 TB Cloud Storage for 18 months at only ৳349 BDT. Save approx ৳35,000.',
   },
 } as const;

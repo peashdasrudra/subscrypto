@@ -5,56 +5,56 @@ import type { BenefitCard, UseCase, FAQItem } from './types';
 
 export const benefits: BenefitCard[] = [
   {
-    title: 'Gemini',
-    description: 'Get assistance with brainstorming, understanding complex concepts, organizing study plans, and developing ideas for your coursework.',
+    title: 'Gemini 3 Pro',
+    description: 'Next-generation flagship AI reasoning engine. Solve complex programming, analyze massive academic textbooks, and brainstorm research with unprecedented speed.',
     icon: 'sparkles',
   },
   {
-    title: 'Veo',
-    description: 'Create AI-assisted videos for presentations, academic projects, and creative assignments with intelligent video generation tools.',
-    icon: 'video',
-  },
-  {
-    title: 'Imagen',
-    description: 'Generate and edit images for visual communication, creative projects, and academic presentations with AI-powered tools.',
-    icon: 'image',
-  },
-  {
-    title: 'NotebookLM',
-    description: 'Organize source materials, explore research questions, and develop comprehensive study notes from your uploaded documents.',
-    icon: 'notebook-pen',
-  },
-  {
-    title: 'Google One Storage',
-    description: 'Additional cloud storage for your Google services, keeping your academic files, projects, and backups organized and accessible.',
+    title: '5 TB Google One Storage',
+    description: 'Massive 5,120 GB unified cloud capacity across Google Drive, Gmail, and Google Photos for datasets, ML models, and high-res media.',
     icon: 'cloud',
   },
   {
-    title: 'Workspace Integration',
-    description: 'AI assistance in supported Google productivity apps like Docs, Sheets, and Slides for more efficient academic workflows.',
+    title: 'Veo Video Studio',
+    description: 'Generate high-definition cinematic videos from text prompts for semester projects, capstone visuals, and creative storytelling.',
+    icon: 'video',
+  },
+  {
+    title: 'Imagen 3 Visual Engine',
+    description: 'Generate and edit photorealistic images, architectural concepts, and presentation diagrams with crisp typography rendering.',
+    icon: 'image',
+  },
+  {
+    title: 'NotebookLM Plus',
+    description: 'Organize source materials, generate source-grounded audio podcasts, and produce instant study guides with verified clickable citations.',
+    icon: 'notebook-pen',
+  },
+  {
+    title: 'Google Workspace AI',
+    description: 'Native Gemini assistance integrated directly inside Docs, Sheets, and Slides for automated drafting, formula synthesis, and presentations.',
     icon: 'layout-grid',
   },
 ];
 
 export const useCases: UseCase[] = [
   {
-    title: 'Academic Study',
-    description: 'Understand difficult concepts, generate practice questions, summarize lengthy readings, and organize revision sessions more effectively.',
+    title: 'Academic Study & STEM',
+    description: 'Tackle advanced differential equations, algorithmic proofs, and deep technical concepts with Gemini 3 Pro.',
     icon: 'graduation-cap',
   },
   {
-    title: 'Research & Thesis',
-    description: 'Explore research questions, organize sources, structure drafts, and develop arguments — while independently verifying important claims.',
+    title: 'Research & Thesis Synthesis',
+    description: 'Synthesize 50+ research PDFs simultaneously in Gemini 3 Pro and save massive datasets in your 5 TB cloud drive without quota limits.',
     icon: 'search',
   },
   {
-    title: 'Assignments & Projects',
-    description: 'Brainstorm solutions, develop project outlines, create supporting visual materials, and structure your work for maximum impact.',
+    title: 'Software Development & ML',
+    description: 'Feed whole software repositories into Gemini 3 Pro. Debug complex race conditions and train machine learning models backed by 5 TB cloud storage.',
     icon: 'file-text',
   },
   {
-    title: 'Career Preparation',
-    description: 'Prepare presentation outlines, improve professional writing, practice interview questions, and explore new skills for your future career.',
+    title: 'Capstone & Presentation Visuals',
+    description: 'Generate cinematic visuals using Veo and Imagen 3 for high-impact semester defense and portfolio presentations.',
     icon: 'briefcase',
   },
 ];
@@ -62,23 +62,27 @@ export const useCases: UseCase[] = [
 export const faqItems: FAQItem[] = [
   {
     question: 'What exactly am I purchasing?',
-    answer: 'You are purchasing an 18-month subscription to Google AI Pro at a student-friendly price of ৳349 BDT. The exact features, usage limits, and activation method are subject to the subscription terms provided upon delivery.',
+    answer: 'You are purchasing an 18-month subsidized student subscription to Google AI Pro featuring the flagship Gemini 3 Pro and a massive 5 TB (5,120 GB) Google One cloud storage allocation for only ৳349 BDT (saving approx ৳35,000).',
+  },
+  {
+    question: 'How do I save approx ৳35,000 Taka with this pass?',
+    answer: 'A regular individual retail subscription for Gemini Advanced / Pro tier and 5 TB cloud storage over 18 months costs upwards of ৳35,349+ BDT ($280+ USD). Through this limited subsidized academic grant quota, Bangladeshi university students pay only ৳349 BDT, saving approximately ৳35,000.',
   },
   {
     question: 'How long does the subscription last?',
-    answer: 'The subscription is valid for 18 months from the date of activation. The exact activation date will be communicated after your payment has been verified and the subscription has been processed.',
+    answer: 'The subscription is valid for 18 continuous months from activation. There are no monthly recurring fees or auto-renewals — ৳349 is a one-time payment.',
   },
   {
-    question: 'Why does the offer cost ৳349?',
-    answer: 'This is a specially curated student offer price for the 18-month subscription term. The pricing reflects the goal of making AI productivity tools accessible to university students in Bangladesh.',
+    question: 'Why are there limited slots remaining?',
+    answer: 'The academic subsidy fund allocates only 100 subsidized seats per university semester batch. Once all 100 slots are claimed, the price resets to standard retail pricing. Claim your pass now while quota is available.',
   },
   {
     question: 'Which features are included?',
-    answer: 'The subscription includes access to tools like Gemini, Veo, Imagen, NotebookLM, Google One storage, and Workspace AI integration. Specific feature availability, usage limits, and storage allocations depend on the exact plan and may vary by region.',
+    answer: 'The subscription includes full access to Gemini 3 Pro, 5 TB Google One storage, NotebookLM Plus with audio podcasts, Veo HD video generator, Imagen 3, and native Google Workspace (Docs, Sheets, Slides) AI integration.',
   },
   {
     question: 'How do I make payment?',
-    answer: 'Choose your preferred mobile financial service (bKash, Nagad, or Rocket), send ৳349 to the recipient number 01533679773, then submit your transaction details through our order form. Detailed step-by-step instructions are provided on the payment page.',
+    answer: 'Send ৳349 to recipient 01533679773 via bKash, Nagad, or Rocket (Send Money). Then submit your Google email and Transaction ID (TrxID) on our payment page. Activation is processed within 2–12 hours.',
   },
   {
     question: 'Which payment methods are accepted?',

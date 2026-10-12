@@ -111,7 +111,7 @@ function OrderConfirmationContent() {
   });
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-0">
+    <div className="max-w-3xl mx-auto">
       
       {/* Success Status Header */}
       <div className="text-center mb-8 sm:mb-10">
@@ -299,7 +299,7 @@ export default function OrderConfirmationPage() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-20 relative overflow-hidden">
+      <main className="min-h-screen pt-32 sm:pt-36 pb-16 sm:pb-20 relative overflow-hidden">
         <div className="container-main relative z-10">
           <Suspense
             fallback={

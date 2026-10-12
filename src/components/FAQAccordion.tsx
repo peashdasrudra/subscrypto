@@ -23,39 +23,39 @@ export default function FAQAccordion() {
       <div className="container-main relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3 sm:mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Got Questions?</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-5">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-3 sm:mb-5">
             Frequently Asked Questions.
           </h2>
-          <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+          <p className="text-slate-300 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
             Everything you need to know about the 18-month student pass, bKash payments, and activation timeline.
           </p>
 
           {/* Quick Filter Search Bar */}
-          <div className="mt-8 max-w-md mx-auto relative">
+          <div className="mt-5 sm:mt-8 max-w-md mx-auto relative">
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               placeholder="Search questions (e.g. bKash, storage, timeline)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.1] text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/60 focus:bg-white/[0.06] transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.1] text-xs sm:text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/60 focus:bg-white/[0.06] transition-all"
             />
           </div>
         </div>
 
         {/* Accordion Container */}
-        <div className="max-w-3xl mx-auto space-y-3">
+        <div className="max-w-3xl mx-auto space-y-2.5 sm:space-y-3">
           {filteredItems.length === 0 ? (
             <div className="text-center py-12 glass-panel">
-              <p className="text-slate-400 text-sm">No matching questions found.</p>
+              <p className="text-slate-400 text-xs sm:text-sm">No matching questions found.</p>
               <button
                 onClick={() => setSearchQuery('')}
-                className="mt-2 text-xs text-indigo-400 hover:underline"
+                className="mt-2 text-xs text-indigo-400 hover:underline cursor-pointer"
               >
                 Reset search
               </button>
@@ -71,17 +71,17 @@ export default function FAQAccordion() {
                   }`}
                 >
                   <button
-                    className="accordion-trigger w-full text-left flex items-center justify-between p-5 md:p-6 cursor-pointer"
+                    className="accordion-trigger w-full text-left flex items-center justify-between p-4 sm:p-5 md:p-6 cursor-pointer"
                     onClick={() => toggle(index)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${index}`}
                     id={`faq-btn-${index}`}
                   >
-                    <span className="pr-4 text-sm md:text-base font-bold text-white leading-snug">
+                    <span className="pr-3 sm:pr-4 text-xs sm:text-sm md:text-base font-bold text-white leading-snug">
                       {item.question}
                     </span>
-                    <div className={`w-8 h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-indigo-500/20 text-indigo-400' : 'text-slate-400'}`}>
-                      <ChevronDown className="w-4 h-4" />
+                    <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/[0.05] border border-white/[0.08] flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-indigo-500/20 text-indigo-400' : 'text-slate-400'}`}>
+                      <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
                   </button>
                   
@@ -91,7 +91,7 @@ export default function FAQAccordion() {
                     aria-labelledby={`faq-btn-${index}`}
                     className={`accordion-content ${isOpen ? 'open' : ''}`}
                   >
-                    <div className="pt-1 pb-5 md:pb-6 text-xs md:text-sm text-slate-300 leading-relaxed border-t border-white/[0.06]">
+                    <div className="pt-1 pb-4 sm:pb-5 md:pb-6 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/[0.06]">
                       {item.answer}
                     </div>
                   </div>

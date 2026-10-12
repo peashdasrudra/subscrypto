@@ -43,7 +43,7 @@ export default function SiteFooter() {
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
                 <a href="#benefits" className="hover:text-cyan-400 transition-colors">
-                  Gemini 1.5 Pro (2M Tokens)
+                  Gemini 3 Pro Neural Core
                 </a>
               </li>
               <li>
@@ -58,7 +58,7 @@ export default function SiteFooter() {
               </li>
               <li>
                 <a href="#benefits" className="hover:text-cyan-400 transition-colors">
-                  2TB Google One Cloud
+                  5 TB Google One Cloud
                 </a>
               </li>
               <li>

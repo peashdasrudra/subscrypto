@@ -4,21 +4,21 @@ import { ArrowRight, ShieldCheck, Zap, MessageCircle, Sparkles } from 'lucide-re
 export default function FinalCTA() {
   return (
     <section className="section-spacing relative overflow-hidden">
-      <div className="container-main relative z-10 px-4 sm:px-6 lg:px-8">
+      <div className="container-main relative z-10">
         
         {/* Glow backdrop behind CTA box */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[250px] sm:h-[350px] bg-gradient-to-r from-indigo-600/25 via-cyan-500/20 to-violet-600/25 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[650px] h-[220px] sm:h-[350px] bg-gradient-to-r from-indigo-600/25 via-cyan-500/20 to-violet-600/25 rounded-full blur-[90px] sm:blur-[140px] pointer-events-none" />
 
         {/* Main Banner Card */}
-        <div className="relative rounded-2xl sm:rounded-3xl glass-panel-elevated p-6 sm:p-10 md:p-16 text-center border border-white/[0.14] overflow-hidden max-w-4xl mx-auto shadow-2xl">
+        <div className="relative rounded-2xl sm:rounded-3xl glass-panel-elevated p-4 xs:p-6 sm:p-10 md:p-16 text-center border border-white/[0.14] overflow-hidden max-w-4xl mx-auto shadow-2xl">
           
           {/* Top Live Chip */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-5 sm:mb-6">
-            <span className="pulse-beacon text-emerald-400 flex-shrink-0">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-5 sm:mb-6">
+            <span className="pulse-beacon text-rose-400 flex-shrink-0">
               <span />
               <span />
             </span>
-            <span>Spring 2026 Student Grant Pool</span>
+            <span>Only 6 Slots Remaining · Spring 2026 Student Grant</span>
           </div>
 
           {/* Heading */}
@@ -28,7 +28,7 @@ export default function FinalCTA() {
 
           {/* Subtext */}
           <p className="text-xs sm:text-base md:text-lg text-slate-300 max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-            Equip yourself with Gemini 1.5 Pro, NotebookLM Plus, Veo video generation, and 2TB cloud storage before allocation quotas close.
+            Equip yourself with Gemini 3 Pro, 5 TB Google One Cloud Storage, NotebookLM Plus, and Veo video studio before allocation quotas close.
           </p>
 
           {/* Price Tag Hero */}
@@ -37,8 +37,8 @@ export default function FinalCTA() {
               <span className="price-display text-3xl sm:text-5xl">৳349</span>
               <span className="text-slate-400 text-xs sm:text-sm font-semibold">/ 18-month pass</span>
             </div>
-            <span className="text-[10px] sm:text-[11px] font-mono text-cyan-400 mt-1">
-              Normally ৳3,600+ · 90% Academic Subsidy
+            <span className="text-[10px] sm:text-[11px] font-mono text-emerald-400 mt-1 font-bold">
+              Normally ৳35,349+ · Save approx ৳35,000
             </span>
           </div>
 

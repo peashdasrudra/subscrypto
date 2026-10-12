@@ -144,7 +144,7 @@ export default function OrderForm({ selectedMethod }: OrderFormProps) {
             </p>
           ) : (
             <span className="text-[10px] sm:text-[11px] text-slate-500 mt-1 block">
-              Where Gemini Pro & 2TB cloud storage will be activated.
+              Where Gemini 3 Pro & 5 TB cloud storage will be activated.
             </span>
           )}
         </div>

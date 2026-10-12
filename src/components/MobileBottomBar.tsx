@@ -25,7 +25,7 @@ export default function MobileBottomBar() {
               ৳349
             </span>
             <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-              Save 90%
+              Save ~৳35k
             </span>
           </div>
           <span className="text-[10px] text-slate-400 font-medium">

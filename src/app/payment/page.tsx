@@ -16,13 +16,13 @@ export default function PaymentPage() {
   return (
     <>
       <SiteHeader />
-      <main className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-20 relative overflow-hidden">
+      <main className="min-h-screen pt-32 sm:pt-36 pb-16 sm:pb-20 relative overflow-hidden">
         
         {/* Ambient background glows */}
         <div className="absolute top-1/4 left-1/3 w-[350px] sm:w-[500px] h-[350px] sm:h-[500px] bg-indigo-600/10 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
         <div className="absolute bottom-1/3 right-1/4 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-cyan-500/10 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none" />
 
-        <div className="container-main relative z-10 px-4 sm:px-6 lg:px-8">
+        <div className="container-main relative z-10">
           
           {/* Breadcrumb Back Link */}
           <Link
@@ -59,10 +59,10 @@ export default function PaymentPage() {
                 </div>
                 <div>
                   <span className="text-xs font-bold text-white block">
-                    Google AI Pro (18 Months)
+                    Gemini 3 Pro + 5TB (18 Months)
                   </span>
                   <span className="text-[10px] text-cyan-400 font-mono">
-                    ৳349 BDT · Saved ৳3,251
+                    ৳349 BDT · Saved ~৳35,000
                   </span>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function PaymentPage() {
               <div className="p-4 pt-1 border-t border-white/[0.06] text-xs text-slate-300 space-y-2 animate-fade-in">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Plan:</span>
-                  <span className="font-semibold text-white">Student Subsidy Pass</span>
+                  <span className="font-semibold text-white">Student Subsidy Pass (99% Off)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Duration:</span>
@@ -84,7 +84,7 @@ export default function PaymentPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Included:</span>
-                  <span className="font-semibold text-white">Gemini 2M, NotebookLM, 2TB Storage</span>
+                  <span className="font-semibold text-white">Gemini 3 Pro, NotebookLM, 5TB Storage</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Total Due:</span>
@@ -112,7 +112,7 @@ export default function PaymentPage() {
                 {/* Header Badge */}
                 <div className="flex items-center justify-between pb-5 border-b border-white/[0.08]">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 p-0.5 shadow-md">
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 to-indigo-600 p-0.5 shadow-md">
                       <div className="w-full h-full bg-navy-950 rounded-[10px] flex items-center justify-center">
                         <Package className="w-4 h-4 text-cyan-400" />
                       </div>
@@ -123,7 +123,7 @@ export default function PaymentPage() {
                     </div>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                    ৳3,251 Saved
+                    Save ~৳35,000
                   </span>
                 </div>
 
@@ -131,7 +131,7 @@ export default function PaymentPage() {
                 <div className="space-y-3.5 text-xs sm:text-sm">
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Product Allocation</span>
-                    <span className="font-bold text-white">Google AI Pro</span>
+                    <span className="font-bold text-white">Gemini 3 Pro + 5TB Cloud</span>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Subscription Term</span>
@@ -139,11 +139,11 @@ export default function PaymentPage() {
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Gemini Model Tier</span>
-                    <span className="font-semibold text-white">1.5 Pro (2M Tokens)</span>
+                    <span className="font-semibold text-white">Gemini 3 Pro (Flagship Reasoning)</span>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Cloud Storage Cap</span>
-                    <span className="font-semibold text-white">2TB (2,048 GB)</span>
+                    <span className="font-semibold text-white">5 TB (5,120 GB)</span>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Activation SLA</span>
@@ -171,10 +171,10 @@ export default function PaymentPage() {
                     What&apos;s Included With This Pass
                   </span>
                   {[
-                    'Gemini 1.5 Pro with 2M token context',
+                    'Gemini 3 Pro flagship reasoning engine',
                     'NotebookLM Plus with audio podcasts & citations',
                     'Veo cinematic video & Imagen 3 visual generators',
-                    '2TB Google One cloud backup storage',
+                    '5 TB Google One unified cloud storage',
                     'Native Google Workspace (Docs/Sheets/Slides) AI',
                   ].map((feat) => (
                     <div key={feat} className="flex items-center gap-2 text-xs text-slate-300">

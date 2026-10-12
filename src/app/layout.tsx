@@ -8,34 +8,35 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Google AI Pro — Official Student Subsidy (Bangladesh) | 18 Months for ৳349",
+  title: "Gemini 3 Pro + 5TB Storage — Official Student Subsidy (Bangladesh) | 18 Months for ৳349",
   description:
-    "Unlock Gemini 1.5 Pro (2M context), NotebookLM Research, Veo & Imagen 3 visual creation, and 2TB Cloud Storage for 18 months at ৳349 BDT. Verified academic program for university students across Bangladesh.",
+    "Unlock Gemini 3 Pro, 5TB Google One Cloud Storage, NotebookLM Research, and Veo for 18 months at only ৳349 BDT. Save approx ৳35,000 with the student allocation grant. Limited slots remaining!",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   keywords: [
-    "Google AI Pro",
-    "Gemini Pro student offer",
-    "Bangladesh student AI subscription",
+    "Gemini 3 Pro",
+    "Gemini 3 Pro student offer",
+    "5TB Google storage",
+    "Google AI Pro student Bangladesh",
     "NotebookLM student",
     "bKash AI payment",
     "Nagad AI payment",
     "BUET student discount",
     "DU student AI",
-    "18 month Google AI Pro",
+    "18 month Gemini 3 Pro pass",
   ],
   authors: [{ name: "SubsCrypto Student AI Desk" }],
   openGraph: {
-    title: "Google AI Pro Student Offer — 18-Month Plan for ৳349 BDT",
+    title: "Gemini 3 Pro + 5TB Cloud Storage — 18 Months for ৳349 (Save ৳35,000)",
     description:
-      "Exclusive academic grant pricing for Bangladeshi university students. Instant bKash, Nagad, and Rocket checkout.",
+      "Exclusive academic grant pricing for Bangladeshi university students. Gemini 3 Pro & 5 TB storage for only ৳349 BDT. Instant bKash/Nagad/Rocket checkout.",
     type: "website",
     locale: "en_BD",
-    siteName: "SubsCrypto — Google AI Pro Student Offer",
+    siteName: "SubsCrypto — Gemini 3 Pro 5TB Student Offer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Google AI Pro Student Offer — 18 Months for ৳349",
-    description: "Gemini 1.5 Pro, NotebookLM, and 2TB Google One storage for Bangladeshi students.",
+    title: "Gemini 3 Pro + 5TB Storage — 18 Months for ৳349 (Save ৳35,000)",
+    description: "Gemini 3 Pro, 5TB Cloud Storage, and NotebookLM for Bangladeshi students. Limited slots left!",
   },
   icons: {
     icon: "/favicon.ico",
