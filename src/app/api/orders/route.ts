@@ -319,5 +319,5 @@ async function sendNotifications(order: {
 // Declare global type for dev storage
 declare global {
   // eslint-disable-next-line no-var
-  var __devOrders: Map<string, Record<string, unknown>> | undefined;
+  var __devOrders: Map<string, any> | undefined;
 }

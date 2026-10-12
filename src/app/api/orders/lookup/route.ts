@@ -77,5 +77,5 @@ export async function GET(request: NextRequest) {
 
 declare global {
   // eslint-disable-next-line no-var
-  var __devOrders: Map<string, Record<string, unknown>> | undefined;
+  var __devOrders: Map<string, any> | undefined;
 }

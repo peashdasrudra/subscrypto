@@ -59,7 +59,7 @@ export default function PaymentPage() {
                 </div>
                 <div>
                   <span className="text-xs font-bold text-white block">
-                    Gemini 3 Pro + 5TB (18 Months)
+                    Gemini 3 Pro + 5TB (Family Account) · 18 Mo
                   </span>
                   <span className="text-[10px] text-cyan-400 font-mono">
                     ৳349 BDT · Saved ~৳35,000
@@ -77,6 +77,10 @@ export default function PaymentPage() {
                 <div className="flex justify-between">
                   <span className="text-slate-400">Plan:</span>
                   <span className="font-semibold text-white">Student Subsidy Pass (99% Off)</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Account Type:</span>
+                  <span className="text-slate-300 font-normal">Family Account</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Duration:</span>
@@ -119,7 +123,7 @@ export default function PaymentPage() {
                     </div>
                     <div>
                       <h3 className="text-sm font-bold text-white">Order Summary Pass</h3>
-                      <span className="text-[10px] font-mono text-slate-400">Bangladeshi Academic Tier</span>
+                      <span className="text-[10px] font-mono text-slate-400">Bangladeshi Academic Tier · Family Account</span>
                     </div>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
@@ -131,7 +135,13 @@ export default function PaymentPage() {
                 <div className="space-y-3.5 text-xs sm:text-sm">
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Product Allocation</span>
-                    <span className="font-bold text-white">Gemini 3 Pro + 5TB Cloud</span>
+                    <span className="font-bold text-white">
+                      Gemini 3 Pro + 5TB Cloud <span className="text-slate-400 font-normal text-xs">(Family Account)</span>
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-300">
+                    <span>Account Tier</span>
+                    <span className="text-slate-300 font-normal">Family Account</span>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Subscription Term</span>

@@ -146,9 +146,17 @@ export default function SiteFooter() {
           <p>
             © 2026 SubsCrypto Student AI Desk. Independently operated service in Dhaka, Bangladesh.
           </p>
-          <p className="text-center md:text-right max-w-md">
-            Not affiliated with, endorsed by, or operated by Google LLC. Google AI Pro, Gemini, and Google One are trademarks of Google LLC.
-          </p>
+          <div className="flex items-center gap-4 text-center md:text-right">
+            <p className="max-w-md">
+              Not affiliated with, endorsed by, or operated by Google LLC. Google AI Pro, Gemini, and Google One are trademarks of Google LLC.
+            </p>
+            <Link
+              href="/admin"
+              className="text-slate-600 hover:text-slate-400 font-mono text-[11px] transition-colors whitespace-nowrap"
+            >
+              Admin Desk
+            </Link>
+          </div>
         </div>
 
       </div>
