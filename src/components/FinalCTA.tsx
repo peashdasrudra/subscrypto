@@ -42,21 +42,21 @@ export default function FinalCTA() {
             </span>
           </div>
 
-          {/* Action Row - Mobile Stacking */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+          {/* Action Row - Mobile Stacking with fixed, predictable bounds */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 w-full max-w-xl mx-auto">
             <Link
               href="/payment"
-              className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3.5 sm:py-4 px-8 sm:px-10 rounded-xl shadow-xl hover:shadow-indigo-500/30 font-bold group justify-center active:scale-[0.98]"
+              className="btn-primary w-full sm:w-auto sm:min-w-[250px] min-h-[52px] text-sm sm:text-base py-3.5 sm:py-4 px-6 sm:px-8 rounded-xl shadow-xl hover:shadow-indigo-500/30 font-bold group justify-center active:scale-[0.98] box-border text-center flex-shrink-0"
             >
               <span>Get Your 18-Month Pass</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
             </Link>
 
             <a
               href="https://wa.me/8801704184297"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full sm:w-auto text-xs sm:text-base py-3.5 sm:py-4 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
+              className="btn-secondary w-full sm:w-auto sm:min-w-[200px] min-h-[52px] text-xs sm:text-base py-3.5 sm:py-4 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform box-border text-center flex-shrink-0"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
               <span>Ask on WhatsApp</span>

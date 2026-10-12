@@ -79,21 +79,21 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Mobile-First Full-Width CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+            {/* Mobile-First Full-Width CTA Buttons with stable dimensions */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-6 sm:mb-8 w-full max-w-xl">
               <Link
                 href="/payment"
-                className="btn-primary w-full sm:w-auto text-sm sm:text-base py-3.5 sm:py-4 px-6 sm:px-8 rounded-xl shadow-xl hover:shadow-indigo-500/30 font-bold group justify-center active:scale-[0.98] transition-transform"
+                className="btn-primary w-full sm:w-auto sm:min-w-[260px] min-h-[52px] text-sm sm:text-base py-3.5 sm:py-4 px-6 sm:px-8 rounded-xl shadow-xl hover:shadow-indigo-500/30 font-bold group justify-center active:scale-[0.98] transition-transform box-border flex-shrink-0 text-center"
               >
                 <span>Claim Your 18-Month Pass</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform flex-shrink-0" />
               </Link>
               <a
                 href="#benefits"
-                className="btn-secondary w-full sm:w-auto text-sm sm:text-base py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl group justify-center active:scale-[0.98] transition-transform"
+                className="btn-secondary w-full sm:w-auto sm:min-w-[170px] min-h-[52px] text-sm sm:text-base py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl group justify-center active:scale-[0.98] transition-transform box-border flex-shrink-0 text-center"
               >
                 <span>Explore Features</span>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors" />
+                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-white transition-colors flex-shrink-0" />
               </a>
             </div>
 
@@ -115,7 +115,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Live Interactive Holographic Gemini 3 Pro AI Reactor */}
-          <div className="lg:col-span-5 mt-6 lg:mt-0">
+          <div className="lg:col-span-5 mt-6 lg:mt-0 w-full min-w-0">
             <LiveGemini3Animation />
           </div>
 

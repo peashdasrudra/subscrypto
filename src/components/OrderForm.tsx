@@ -252,7 +252,7 @@ export default function OrderForm({ selectedMethod }: OrderFormProps) {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="btn-primary w-full min-h-[52px] py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-xl shadow-xl hover:shadow-indigo-500/30 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer"
+            className="btn-primary w-full min-h-[52px] py-3.5 sm:py-4 text-sm sm:text-base font-bold rounded-xl shadow-xl hover:shadow-indigo-500/30 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer box-border flex-shrink-0 text-center"
           >
             {isSubmitting ? (
               <>

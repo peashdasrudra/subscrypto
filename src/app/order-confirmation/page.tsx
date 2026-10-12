@@ -260,17 +260,17 @@ function OrderConfirmationContent() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary w-full sm:w-auto py-3.5 px-6 text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98]"
+            className="btn-primary w-full sm:w-auto min-h-[48px] py-3.5 px-6 text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-2 active:scale-[0.98] box-border flex-shrink-0"
           >
-            <MessageCircle className="w-4 h-4" />
+            <MessageCircle className="w-4 h-4 flex-shrink-0" />
             <span>Chat on WhatsApp</span>
           </a>
 
           <button
             onClick={() => window.print()}
-            className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2 active:scale-[0.98]"
+            className="w-full sm:w-auto min-h-[48px] px-5 py-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.08] text-xs font-semibold text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2 active:scale-[0.98] box-border flex-shrink-0 cursor-pointer"
           >
-            <Printer className="w-4 h-4" />
+            <Printer className="w-4 h-4 flex-shrink-0" />
             <span>Print Receipt</span>
           </button>
         </div>

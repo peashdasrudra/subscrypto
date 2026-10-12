@@ -105,10 +105,10 @@ export default function LiveScarcityTicker() {
 
             <Link
               href="/payment"
-              className="inline-flex items-center gap-0.5 font-bold text-cyan-300 hover:text-white underline underline-offset-2 flex-shrink-0 whitespace-nowrap"
+              className="inline-flex items-center justify-end gap-0.5 font-bold text-cyan-300 hover:text-white underline underline-offset-2 flex-shrink-0 whitespace-nowrap min-w-[58px]"
             >
               <span>Lock In</span>
-              <ArrowRight className="w-2.5 h-2.5" />
+              <ArrowRight className="w-2.5 h-2.5 flex-shrink-0" />
             </Link>
           </div>
 
@@ -131,7 +131,7 @@ export default function LiveScarcityTicker() {
               className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold text-cyan-300 hover:text-white underline underline-offset-4 decoration-cyan-400/50 hover:decoration-white transition-all cursor-pointer ml-1 flex-shrink-0"
             >
               <span>Lock In Your Slot</span>
-              <ArrowRight className="w-3 h-3" />
+              <ArrowRight className="w-3 h-3 flex-shrink-0" />
             </Link>
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function LiveScarcityTicker() {
       {!toastDismissed && !isCheckoutPage && (
         <aside
           aria-label="Live claim notification"
-          className={`fixed bottom-[74px] sm:bottom-6 left-3 right-3 sm:right-auto sm:left-4 z-40 sm:max-w-sm transition-all duration-500 ${
+          className={`fixed bottom-[74px] sm:bottom-6 left-3 right-3 sm:right-auto sm:left-4 z-40 sm:w-[360px] sm:max-w-sm transition-all duration-500 ${
             isToastVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95 pointer-events-none'
           }`}
         >

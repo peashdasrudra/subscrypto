@@ -88,22 +88,22 @@ export default function SiteHeader() {
 
           {/* Right Desktop CTAs */}
           <div className="hidden sm:flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold">
+            <div className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex-shrink-0">
               <Zap className="w-3.5 h-3.5 fill-current" />
               <span>৳349 · Save ~৳35k</span>
             </div>
             <Link
               href="/payment"
-              className="btn-primary py-2.5 px-5 text-xs font-bold rounded-xl shadow-lg hover:shadow-indigo-500/25 flex items-center gap-1.5 active:scale-95 transition-transform"
+              className="btn-primary min-w-[170px] py-2.5 px-5 text-xs font-bold rounded-xl shadow-lg hover:shadow-indigo-500/25 flex items-center justify-center gap-1.5 active:scale-95 transition-transform flex-shrink-0"
             >
               <span>Claim Student Pass</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
             </Link>
           </div>
 
         {/* Mobile Menu Trigger (Generous 44px tap target) */}
         <button
-          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.1] text-slate-300 hover:text-white active:scale-95 transition-all cursor-pointer"
+          className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-white/[0.05] border border-white/[0.1] text-slate-300 hover:text-white active:scale-95 transition-all cursor-pointer flex-shrink-0"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
@@ -119,7 +119,7 @@ export default function SiteHeader() {
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] mb-3">
               <span className="text-xs text-slate-300 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 Verified Student Subsidy
               </span>
               <span className="text-xs font-bold text-cyan-400 font-mono">৳349 BDT</span>
@@ -141,21 +141,21 @@ export default function SiteHeader() {
           <div className="pt-4 border-t border-white/[0.08] space-y-3 pb-6">
             <Link
               href="/payment"
-              className="btn-primary w-full py-4 text-sm font-bold justify-center rounded-xl shadow-xl flex items-center gap-2 active:scale-95 transition-transform"
+              className="btn-primary w-full min-h-[50px] py-3.5 text-sm font-bold justify-center rounded-xl shadow-xl flex items-center gap-2 active:scale-95 transition-transform box-border"
               onClick={() => setMobileOpen(false)}
             >
               <span>Claim Student Pass (৳349)</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 flex-shrink-0" />
             </Link>
 
             <a
               href="https://wa.me/8801704184297"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full py-3.5 text-xs font-semibold justify-center rounded-xl flex items-center gap-2 text-emerald-400 active:scale-95 transition-transform"
+              className="btn-secondary w-full min-h-[48px] py-3 text-xs font-semibold justify-center rounded-xl flex items-center gap-2 text-emerald-400 active:scale-95 transition-transform box-border"
               onClick={() => setMobileOpen(false)}
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 flex-shrink-0" />
               <span>Ask on WhatsApp (+880 1704-184297)</span>
             </a>
           </div>

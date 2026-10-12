@@ -95,11 +95,11 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        {/* Action Prompt */}
-        <div className="mt-10 sm:mt-14 text-center">
+        {/* Action Prompt with stable dimensions */}
+        <div className="mt-10 sm:mt-14 text-center max-w-md mx-auto w-full">
           <Link
             href="/payment"
-            className="btn-primary w-full sm:w-auto py-3.5 px-6 sm:px-8 text-sm font-bold inline-flex items-center justify-center gap-2 rounded-xl shadow-lg hover:shadow-indigo-500/25 active:scale-95 transition-transform"
+            className="btn-primary w-full sm:w-auto sm:min-w-[280px] min-h-[52px] py-3.5 px-6 sm:px-8 text-sm font-bold inline-flex items-center justify-center gap-2 rounded-xl shadow-lg hover:shadow-indigo-500/25 active:scale-95 transition-transform box-border flex-shrink-0 text-center"
           >
             <span>Proceed to Step 1: Claim Offer</span>
           </Link>

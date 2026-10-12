@@ -31,7 +31,7 @@ export default function LiveGemini3Animation() {
     // Live token generation stream simulation
     const tokenInterval = setInterval(() => {
       setTokensProcessed((prev) => prev + Math.floor(Math.random() * 3200) + 1200);
-    }, 150);
+    }, 400);
 
     return () => {
       clearInterval(stepInterval);
@@ -167,18 +167,20 @@ export default function LiveGemini3Animation() {
             <span className="w-0.5 sm:w-1 bg-emerald-400 rounded-full animate-sound-wave-2" />
             <span className="w-0.5 sm:w-1 bg-cyan-400 rounded-full animate-sound-wave-1" />
           </div>
-          <span className="text-[9.5px] sm:text-[10px] font-mono font-bold text-cyan-300 flex-shrink-0">
-            {tokensProcessed.toLocaleString()} tk/s
-          </span>
+          <div className="flex items-center justify-end min-w-[105px] flex-shrink-0">
+            <span className="text-[9.5px] sm:text-[10px] font-mono font-bold text-cyan-300 tabular-nums whitespace-nowrap text-right">
+              {tokensProcessed.toLocaleString()} tk/s
+            </span>
+          </div>
         </div>
 
         {/* Simulated Interactive Terminal Feed */}
         <div className="relative z-10 p-2.5 sm:p-3.5 rounded-xl bg-navy-950/90 border border-white/[0.08] mb-3 sm:mb-4 font-mono">
           <div className="flex items-center justify-between pb-1.5 sm:pb-2 mb-1.5 sm:mb-2 border-b border-white/[0.06]">
             <div className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-rose-500/80 inline-block" />
-              <span className="w-2 h-2 rounded-full bg-amber-500/80 inline-block" />
-              <span className="w-2 h-2 rounded-full bg-emerald-500/80 inline-block" />
+              <span className="w-2 h-2 rounded-full bg-rose-500/80 inline-block flex-shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-amber-500/80 inline-block flex-shrink-0" />
+              <span className="w-2 h-2 rounded-full bg-emerald-500/80 inline-block flex-shrink-0" />
               <span className="text-[9.5px] sm:text-[10px] text-slate-400 ml-1 font-semibold truncate">gemini3_runtime.sh</span>
             </div>
             <span className={`text-[8.5px] sm:text-[9px] font-bold px-1.5 py-0.5 rounded border ${currentSim.badgeColor} flex-shrink-0`}>
@@ -192,8 +194,8 @@ export default function LiveGemini3Animation() {
           </div>
 
           <div className="flex items-center justify-between mt-1 text-[9.5px] sm:text-[10px] text-slate-400 pt-1">
-            <span className="truncate pr-1">&gt; {currentSim.title}</span>
-            <span className="text-cyan-300 font-bold flex-shrink-0">{currentSim.metric}</span>
+            <span className="truncate pr-1 flex-1 min-w-0">&gt; {currentSim.title}</span>
+            <span className="text-cyan-300 font-bold flex-shrink-0 min-w-[95px] text-right font-mono tabular-nums">{currentSim.metric}</span>
           </div>
         </div>
 
@@ -204,7 +206,7 @@ export default function LiveGemini3Animation() {
               <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping flex-shrink-0" />
               Batch Quota Progress
             </span>
-            <span className="font-mono font-bold text-rose-300 text-[10px] sm:text-xs">
+            <span className="font-mono font-bold text-rose-300 text-[10px] sm:text-xs tabular-nums">
               94 / 100 Claimed (94%)
             </span>
           </div>
@@ -222,18 +224,18 @@ export default function LiveGemini3Animation() {
 
           <div className="flex items-center justify-between text-[9.5px] sm:text-[10px] text-slate-300 mt-1.5">
             <span className="text-rose-300 font-semibold truncate mr-1">⚠️ Only 6 Slots Left in Quota</span>
-            <span className="text-cyan-300 font-bold flex-shrink-0">Fee: ৳349</span>
+            <span className="text-cyan-300 font-bold flex-shrink-0 font-mono">Fee: ৳349</span>
           </div>
         </div>
 
-        {/* Action Button inside Visual Card */}
-        <div className="relative z-10 pt-1">
+        {/* Action Button inside Visual Card with rigid sizing */}
+        <div className="relative z-10 pt-1 w-full">
           <Link
             href="/payment"
-            className="btn-primary w-full py-3 sm:py-3.5 text-xs sm:text-sm font-extrabold rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform"
+            className="btn-primary w-full min-h-[48px] py-3.5 text-xs sm:text-sm font-extrabold rounded-xl shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform box-border text-center"
           >
             <span>Claim Slot #95 at ৳349</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 flex-shrink-0" />
           </Link>
           <div className="flex items-center justify-center gap-2 sm:gap-3 text-[9.5px] sm:text-[10px] text-slate-400 mt-2">
             <span className="flex items-center gap-1">
