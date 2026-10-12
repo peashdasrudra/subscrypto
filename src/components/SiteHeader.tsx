@@ -149,14 +149,14 @@ export default function SiteHeader() {
             </Link>
 
             <a
-              href="https://wa.me/8801533679773"
+              href="https://wa.me/8801704184297"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full py-3.5 text-xs font-semibold justify-center rounded-xl flex items-center gap-2 text-emerald-400"
+              className="btn-secondary w-full py-3.5 text-xs font-semibold justify-center rounded-xl flex items-center gap-2 text-emerald-400 active:scale-95 transition-transform"
               onClick={() => setMobileOpen(false)}
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Ask on WhatsApp (+880 1533-679773)</span>
+              <span>Ask on WhatsApp (+880 1704-184297)</span>
             </a>
           </div>
         </div>

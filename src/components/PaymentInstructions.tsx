@@ -4,9 +4,10 @@ import { useState, useEffect } from 'react';
 import { Copy, Check, QrCode, ArrowRight, ShieldCheck, Smartphone, AlertCircle, Info, ExternalLink } from 'lucide-react';
 import QRCodeLib from 'qrcode';
 import type { PaymentMethod } from '@/lib/types';
+import { CLIENT_OFFER_CONFIG } from '@/lib/config';
 
-const RECIPIENT = '01533679773';
-const AMOUNT = '349';
+const RECIPIENT = CLIENT_OFFER_CONFIG.payment.recipientNumber;
+const AMOUNT = CLIENT_OFFER_CONFIG.pricing.amount.toString();
 
 const methods: { id: PaymentMethod; label: string; color: string; bgBadge: string }[] = [
   { id: 'bKash', label: 'bKash', color: '#E2136E', bgBadge: 'bg-[#E2136E]/15 text-[#E2136E] border-[#E2136E]/30' },
@@ -30,7 +31,7 @@ export default function PaymentInstructions({
 
   useEffect(() => {
     // Generate QR code for mobile scanning
-    const qrPayload = `${selectedMethod}:01533679773?amount=349`;
+    const qrPayload = `${selectedMethod}:${RECIPIENT}?amount=${AMOUNT}`;
     QRCodeLib.toDataURL(qrPayload, {
       width: 240,
       margin: 1,

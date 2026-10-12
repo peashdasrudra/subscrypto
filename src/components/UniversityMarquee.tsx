@@ -213,7 +213,7 @@ export default function UniversityMarquee() {
         <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
         <span>Subsidized university passes activated via official student credentials</span>
         <span className="hidden sm:inline">·</span>
-        <span className="hidden sm:inline text-cyan-300 font-semibold">Hover any campus to pause</span>
+        <span className="hidden sm:inline text-cyan-300 font-semibold">Tap or hover any campus to pause</span>
       </div>
     </div>
   );

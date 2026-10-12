@@ -1,20 +1,21 @@
 import { MousePointerClick, Smartphone, Send, CheckCircle, Clock, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { CLIENT_OFFER_CONFIG } from '@/lib/config';
 
 const steps = [
   {
     step: '01',
     time: '30 Sec',
     title: 'Lock In Student Offer',
-    description: 'Review the 18-month subsidized parameters (৳349 BDT). Click to proceed to the secure checkout terminal.',
+    description: `Review the 18-month subsidized parameters (৳${CLIENT_OFFER_CONFIG.pricing.amount} BDT). Click to proceed to the secure checkout terminal.`,
     icon: <MousePointerClick className="w-6 h-6 text-cyan-400" />,
     badge: 'Step 1 · Selection',
   },
   {
     step: '02',
     time: '60 Sec',
-    title: 'Send ৳349 via MFS',
-    description: 'Open your bKash, Nagad, or Rocket app. Use "Send Money" to recipient 01533679773 or scan our instant QR code. Copy your Transaction ID.',
+    title: `Send ৳${CLIENT_OFFER_CONFIG.pricing.amount} via MFS`,
+    description: `Open your bKash, Nagad, or Rocket app. Use "Send Money" to recipient ${CLIENT_OFFER_CONFIG.payment.recipientNumber} or scan our instant QR code. Copy your Transaction ID.`,
     icon: <Smartphone className="w-6 h-6 text-indigo-400" />,
     badge: 'Step 2 · Payment',
   },

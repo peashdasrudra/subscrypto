@@ -4,13 +4,13 @@ import type { OrderRecord, OrderStatus, PaymentMethod } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
-const ADMIN_SECRET = process.env.ADMIN_KEY || process.env.ADMIN_SECRET || 'admin123';
+const ADMIN_SECRET = process.env.ADMIN_KEY || process.env.ADMIN_SECRET || 'admin5225';
 
 function isAuthorized(request: NextRequest): boolean {
   const headerKey = request.headers.get('x-admin-key');
   const queryKey = request.nextUrl.searchParams.get('key');
   const authKey = headerKey || queryKey;
-  return authKey === ADMIN_SECRET;
+  return Boolean(authKey && authKey.trim() === ADMIN_SECRET);
 }
 
 // Initial realistic demo seed orders for first-time dashboard experience
@@ -170,9 +170,11 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // 2. Merge in-memory orders (takes precedence for recent dev submissions)
+    // 2. Merge in-memory orders (supplements DB with any local dev submissions)
     devStore.forEach((devOrder, ref) => {
-      ordersMap.set(ref, devOrder);
+      if (!ordersMap.has(ref)) {
+        ordersMap.set(ref, devOrder);
+      }
     });
 
     const orders = Array.from(ordersMap.values()).sort(

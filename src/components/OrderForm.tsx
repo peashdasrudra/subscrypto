@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AlertCircle, ArrowRight, Loader2, Lock } from 'lucide-react';
+import { CLIENT_OFFER_CONFIG } from '@/lib/config';
 import { orderSubmissionSchema, type OrderSubmissionInput } from '@/lib/validation';
 import type { PaymentMethod } from '@/lib/types';
 
@@ -30,10 +31,12 @@ export default function OrderForm({ selectedMethod }: OrderFormProps) {
     },
   });
 
-  // Sync selected payment method from parent
-  if (selectedMethod) {
-    setValue('paymentMethod', selectedMethod);
-  }
+  // Sync selected payment method from parent safely inside useEffect
+  useEffect(() => {
+    if (selectedMethod) {
+      setValue('paymentMethod', selectedMethod);
+    }
+  }, [selectedMethod, setValue]);
 
   const onSubmit = async (data: OrderSubmissionInput) => {
     if (isSubmitting) return;
@@ -233,7 +236,7 @@ export default function OrderForm({ selectedMethod }: OrderFormProps) {
               {...register('termsAccepted')}
             />
             <span className="text-xs text-slate-300 leading-relaxed group-hover:text-white transition-colors">
-              I have sent ৳349 to <span className="font-mono text-cyan-400">01533679773</span> via {selectedMethod} and verify that my email above is correct.
+              I have sent ৳{CLIENT_OFFER_CONFIG.pricing.amount} to <span className="font-mono text-cyan-400">{CLIENT_OFFER_CONFIG.payment.recipientNumber}</span> via {selectedMethod} and verify that my email above is correct.
             </span>
           </label>
           {errors.termsAccepted && (

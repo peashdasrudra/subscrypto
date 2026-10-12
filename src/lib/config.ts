@@ -24,6 +24,9 @@ export const OFFER_CONFIG = {
   },
   support: {
     email: process.env.SUPPORT_EMAIL || 'support@subscrypto.com',
+    whatsapp: '01704184297',
+    whatsappFormatted: '+880 1704-184297',
+    whatsappLink: 'https://wa.me/8801704184297',
     responseTimeHours: 12,
   },
   site: {
@@ -51,6 +54,9 @@ export const CLIENT_OFFER_CONFIG = {
   },
   support: {
     email: 'support@subscrypto.com',
+    whatsapp: '01704184297',
+    whatsappFormatted: '+880 1704-184297',
+    whatsappLink: 'https://wa.me/8801704184297',
     responseTimeHours: 12,
   },
   site: {

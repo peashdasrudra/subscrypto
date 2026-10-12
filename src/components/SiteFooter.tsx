@@ -105,13 +105,13 @@ export default function SiteFooter() {
             </h4>
             <div className="space-y-3">
               <a
-                href="https://wa.me/8801533679773"
+                href="https://wa.me/8801704184297"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs font-semibold text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all"
               >
                 <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                <span>WhatsApp: 01533679773</span>
+                <span>WhatsApp: 01704184297</span>
               </a>
 
               <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">

@@ -255,7 +255,7 @@ function OrderConfirmationContent() {
         {/* Mobile-Friendly Full-Width Action Buttons */}
         <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <a
-            href={`https://wa.me/8801533679773?text=${encodeURIComponent(
+            href={`https://wa.me/8801704184297?text=${encodeURIComponent(
               `Hello! I just placed an order on SubsCrypto. Order Ref: ${order.orderReference}. Could you please check my status?`
             )}`}
             target="_blank"
@@ -287,7 +287,7 @@ function OrderConfirmationContent() {
           • <strong>Confirmation Email:</strong> Once our verification team cross-checks your TrxID with the {order.paymentMethod} ledger, an activation dispatch will be sent directly to your submitted Google account.
         </p>
         <p>
-          • <strong>Need quick help?</strong> WhatsApp our Dhaka desk at <span className="font-mono text-emerald-400">+880 1533-679773</span> with your order reference <strong className="font-mono text-white">{order.orderReference}</strong>.
+          • <strong>Need quick help?</strong> WhatsApp our Dhaka desk at <span className="font-mono text-emerald-400">+880 1704-184297</span> with your order reference <strong className="font-mono text-white">{order.orderReference}</strong>.
         </p>
       </div>
 

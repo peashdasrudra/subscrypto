@@ -4,13 +4,13 @@ import type { OrderStatus, OrderRecord } from '@/lib/types';
 
 export const dynamic = 'force-dynamic';
 
-const ADMIN_SECRET = process.env.ADMIN_KEY || process.env.ADMIN_SECRET || 'admin123';
+const ADMIN_SECRET = process.env.ADMIN_KEY || process.env.ADMIN_SECRET || 'admin5225';
 
 function isAuthorized(request: NextRequest): boolean {
   const headerKey = request.headers.get('x-admin-key');
   const queryKey = request.nextUrl.searchParams.get('key');
   const authKey = headerKey || queryKey;
-  return authKey === ADMIN_SECRET;
+  return Boolean(authKey && authKey.trim() === ADMIN_SECRET);
 }
 
 export async function PATCH(

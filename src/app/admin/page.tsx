@@ -29,6 +29,8 @@ import {
   ArrowUpDown,
   ExternalLink,
   PlusCircle,
+  Eye,
+  EyeOff,
 } from 'lucide-react';
 import type { OrderRecord, OrderStatus, PaymentMethod } from '@/lib/types';
 
@@ -88,6 +90,8 @@ const PAYMENT_BADGES: Record<PaymentMethod, { label: string; class: string }> = 
 
 export default function AdminDashboardPage() {
   const [passcode, setPasscode] = useState('');
+  const [rememberDevice, setRememberDevice] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
 
@@ -108,22 +112,25 @@ export default function AdminDashboardPage() {
   const [updatingStatusId, setUpdatingStatusId] = useState<string | null>(null);
   const [editNotes, setEditNotes] = useState('');
 
-  // Check stored passcode on mount
+  // Check stored passcode on mount (Only if previously verified and saved)
   useEffect(() => {
-    const savedPin = localStorage.getItem('subscrypto_admin_pin') || 'admin123';
+    const savedPin =
+      sessionStorage.getItem('subscrypto_admin_pin') ||
+      localStorage.getItem('subscrypto_admin_pin');
     if (savedPin) {
       setPasscode(savedPin);
-      fetchOrders(savedPin);
+      fetchOrders(savedPin, false);
     }
   }, []);
 
   const handleLogin = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!passcode.trim()) {
-      setAuthError('Please enter the admin passcode.');
+    const cleanPin = passcode.trim();
+    if (!cleanPin) {
+      setAuthError('Please enter the admin password.');
       return;
     }
-    fetchOrders(passcode.trim(), true);
+    fetchOrders(cleanPin, true);
   };
 
   const fetchOrders = async (pin: string, savePin = false) => {
@@ -132,18 +139,28 @@ export default function AdminDashboardPage() {
     setError(null);
 
     try {
-      const response = await fetch(`/api/admin/orders?key=${encodeURIComponent(pin)}`);
+      const response = await fetch(`/api/admin/orders?key=${encodeURIComponent(pin)}`, {
+        headers: {
+          'x-admin-key': pin,
+        },
+      });
       const result = await response.json();
 
       if (!response.ok || !result.success) {
         setIsAuthenticated(false);
-        setAuthError(result.error || 'Invalid admin passcode.');
+        setAuthError(result.error || 'Access denied. Incorrect admin password.');
+        sessionStorage.removeItem('subscrypto_admin_pin');
+        localStorage.removeItem('subscrypto_admin_pin');
         return;
       }
 
       setIsAuthenticated(true);
       if (savePin) {
-        localStorage.setItem('subscrypto_admin_pin', pin);
+        if (rememberDevice) {
+          localStorage.setItem('subscrypto_admin_pin', pin);
+        } else {
+          sessionStorage.setItem('subscrypto_admin_pin', pin);
+        }
       }
       setOrders(result.data.orders || []);
     } catch {
@@ -160,10 +177,12 @@ export default function AdminDashboardPage() {
   };
 
   const handleLogout = () => {
+    sessionStorage.removeItem('subscrypto_admin_pin');
     localStorage.removeItem('subscrypto_admin_pin');
     setIsAuthenticated(false);
     setPasscode('');
     setOrders([]);
+    setSelectedOrder(null);
   };
 
   const handleStatusUpdate = async (orderId: string, newStatus: OrderStatus, notes?: string) => {
@@ -321,43 +340,67 @@ export default function AdminDashboardPage() {
         <div className="absolute top-1/4 left-1/3 w-[360px] h-[360px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/3 w-[320px] h-[320px] bg-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="w-full max-w-md glass-panel-elevated p-8 sm:p-10 rounded-3xl border border-white/[0.12] relative z-10 shadow-2xl">
-          <div className="flex flex-col items-center text-center mb-8">
+        <div className="w-full max-w-md glass-panel-elevated p-6 sm:p-10 rounded-3xl border border-white/[0.12] relative z-10 shadow-2xl">
+          <div className="flex flex-col items-center text-center mb-7">
             <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-400 via-indigo-600 to-violet-500 p-0.5 shadow-[0_0_30px_rgba(99,102,241,0.5)] mb-4">
               <div className="w-full h-full bg-navy-950 rounded-[14px] flex items-center justify-center">
                 <Lock className="w-6 h-6 text-cyan-400" />
               </div>
             </div>
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">SubsCrypto Console</h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Internal Order Review & Google Family Account Desk
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/25 text-rose-300 text-[10px] font-mono font-bold uppercase tracking-wider mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse" />
+              <span>Restricted · Staff Only</span>
+            </div>
+            <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">SubsCrypto Management Portal</h1>
+            <p className="text-xs text-slate-400 mt-1">
+              Protected operations console for student order reviews and Family Account fulfillment.
             </p>
           </div>
 
           {authError && (
-            <div className="mb-5 p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2.5">
+            <div className="mb-5 p-3.5 rounded-xl bg-rose-950/50 border border-rose-500/40 text-rose-300 text-xs flex items-center gap-2.5 animate-fade-in shadow-md">
               <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
-              <span>{authError}</span>
+              <span className="font-medium">{authError}</span>
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label htmlFor="adminPin" className="block text-xs font-mono font-semibold text-slate-300 uppercase tracking-wider mb-2">
-                Admin Master PIN
+                Admin Master Password
               </label>
-              <input
-                id="adminPin"
-                type="password"
-                value={passcode}
-                onChange={(e) => setPasscode(e.target.value)}
-                placeholder="Enter passcode (default: admin123)"
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.12] focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 text-white placeholder-slate-600 text-sm font-mono tracking-wider transition-colors"
-                autoFocus
-              />
-              <span className="text-[11px] text-slate-500 mt-1.5 block">
-                Default authorization key: <code className="text-cyan-400">admin123</code>
-              </span>
+              <div className="relative">
+                <input
+                  id="adminPin"
+                  type={showPassword ? 'text' : 'password'}
+                  value={passcode}
+                  onChange={(e) => setPasscode(e.target.value)}
+                  placeholder="Enter admin password"
+                  className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-white/[0.04] border border-white/[0.12] focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400 text-white placeholder-slate-600 text-sm font-mono tracking-wider transition-colors"
+                  autoFocus
+                  autoComplete="current-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 p-1 cursor-pointer"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between text-xs pt-1">
+              <label className="flex items-center gap-2 cursor-pointer text-slate-400 hover:text-slate-200">
+                <input
+                  type="checkbox"
+                  checked={rememberDevice}
+                  onChange={(e) => setRememberDevice(e.target.checked)}
+                  className="w-4 h-4 rounded border-white/20 bg-navy-950 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                />
+                <span>Remember on this browser</span>
+              </label>
             </div>
 
             <button
@@ -368,12 +411,12 @@ export default function AdminDashboardPage() {
               {loading ? (
                 <>
                   <RefreshCw className="w-4 h-4 animate-spin" />
-                  <span>Verifying Credentials...</span>
+                  <span>Verifying Master Credentials...</span>
                 </>
               ) : (
                 <>
                   <Unlock className="w-4 h-4" />
-                  <span>Unlock Management Portal</span>
+                  <span>Unlock Admin Portal</span>
                 </>
               )}
             </button>
@@ -663,8 +706,126 @@ export default function AdminDashboardPage() {
               </button>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
+            <>
+              {/* Mobile Card List View (Visible on < md screens) */}
+              <div className="md:hidden divide-y divide-white/[0.08]">
+                {filteredOrders.map((order) => {
+                  const statusInfo = STATUS_CONFIG[order.status] || STATUS_CONFIG.PENDING_REVIEW;
+                  const paymentBadge = PAYMENT_BADGES[order.payment_method] || PAYMENT_BADGES.bKash;
+
+                  return (
+                    <div key={order.order_reference} className="p-4 space-y-3 hover:bg-white/[0.02] transition-colors">
+                      {/* Top Row: Ref, Status & Amount */}
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <button
+                            onClick={() => handleCopy(order.order_reference, order.order_reference)}
+                            className="inline-flex items-center gap-1.5 font-mono font-bold text-white hover:text-cyan-400 text-sm"
+                            title="Click to copy order ref"
+                          >
+                            <span>{order.order_reference}</span>
+                            {copiedKey === order.order_reference ? (
+                              <Check className="w-3 h-3 text-emerald-400" />
+                            ) : (
+                              <Copy className="w-3 h-3 text-slate-500" />
+                            )}
+                          </button>
+                          <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                            {new Date(order.created_at).toLocaleDateString()} · {new Date(order.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </div>
+                        </div>
+
+                        <div className="text-right flex flex-col items-end gap-1">
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10.5px] font-semibold border ${statusInfo.badgeClass}`}>
+                            <span className={`w-1.5 h-1.5 rounded-full ${statusInfo.dotClass}`} />
+                            <span>{statusInfo.label}</span>
+                          </span>
+                          <span className="font-mono font-bold text-cyan-300 text-xs">
+                            ৳{order.amount_bdt || 349} BDT
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Middle: Student Details */}
+                      <div className="p-2.5 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold text-white">{order.customer_name}</span>
+                          <span className={`px-2 py-0.2 rounded text-[10px] font-bold border ${paymentBadge.class}`}>
+                            {paymentBadge.label}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-slate-300 gap-2">
+                          <span className="truncate text-[11px] font-mono text-slate-400">{order.customer_email}</span>
+                          <button
+                            onClick={() => handleCopy(order.customer_email, `email-${order.order_reference}`)}
+                            className="text-slate-400 hover:text-cyan-400 flex-shrink-0 p-1"
+                            title="Copy email"
+                          >
+                            {copiedKey === `email-${order.order_reference}` ? (
+                              <Check className="w-3 h-3 text-emerald-400" />
+                            ) : (
+                              <Copy className="w-3 h-3" />
+                            )}
+                          </button>
+                        </div>
+                        <div className="flex items-center justify-between pt-1 border-t border-white/[0.04] text-[11px]">
+                          <span className="text-slate-500 font-mono">TrxID:</span>
+                          <button
+                            onClick={() => handleCopy(order.transaction_id, `trx-${order.order_reference}`)}
+                            className="inline-flex items-center gap-1 font-mono font-bold text-cyan-300 hover:text-white bg-white/[0.04] px-2 py-0.5 rounded border border-white/[0.08]"
+                            title="Click to copy Transaction ID"
+                          >
+                            <span>{order.transaction_id}</span>
+                            {copiedKey === `trx-${order.order_reference}` ? (
+                              <Check className="w-3 h-3 text-emerald-400" />
+                            ) : (
+                              <Copy className="w-3 h-3 text-slate-500" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Bottom Action Row */}
+                      <div className="flex items-center justify-between gap-2 pt-1">
+                        <div className="flex items-center gap-1.5">
+                          {order.status === 'PENDING_REVIEW' && (
+                            <button
+                              onClick={() => handleStatusUpdate(order.id, 'PAYMENT_CONFIRMED')}
+                              disabled={updatingStatusId === order.id}
+                              className="px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 border border-cyan-500/30 text-cyan-300 text-xs font-semibold cursor-pointer active:scale-95 transition-all"
+                            >
+                              Confirm
+                            </button>
+                          )}
+                          {order.status === 'PAYMENT_CONFIRMED' && (
+                            <button
+                              onClick={() => handleStatusUpdate(order.id, 'COMPLETED')}
+                              disabled={updatingStatusId === order.id}
+                              className="px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 text-xs font-semibold cursor-pointer active:scale-95 transition-all"
+                            >
+                              Complete
+                            </button>
+                          )}
+                        </div>
+
+                        <button
+                          onClick={() => {
+                            setSelectedOrder(order);
+                            setEditNotes(order.admin_notes || '');
+                          }}
+                          className="px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.1] text-white text-xs font-semibold cursor-pointer active:scale-95 transition-all"
+                        >
+                          Inspect & Fulfill
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Desktop Table View (Visible on >= md screens) */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
                   <tr className="border-b border-white/[0.08] bg-white/[0.02] text-slate-400 font-mono uppercase tracking-wider text-[10px]">
                     <th className="py-3.5 px-4">Order Ref</th>
@@ -816,7 +977,8 @@ export default function AdminDashboardPage() {
                 </tbody>
               </table>
             </div>
-          )}
+          </>
+        )}
 
         </div>
 

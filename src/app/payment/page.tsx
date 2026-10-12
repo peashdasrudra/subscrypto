@@ -203,7 +203,7 @@ export default function PaymentPage() {
                     <span className="text-[11px] text-slate-400 block">Our Dhaka desk is online</span>
                   </div>
                   <a
-                    href="https://wa.me/8801533679773"
+                    href="https://wa.me/8801704184297"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 transition-colors"

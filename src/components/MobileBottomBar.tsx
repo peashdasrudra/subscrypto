@@ -7,8 +7,8 @@ import { ArrowRight, Sparkles, MessageCircle, Zap } from 'lucide-react';
 export default function MobileBottomBar() {
   const pathname = usePathname();
 
-  // Hide on payment or confirmation pages if redundant
-  if (pathname === '/payment' || pathname?.startsWith('/order-confirmation')) {
+  // Hide on payment, confirmation, or admin pages
+  if (pathname === '/payment' || pathname?.startsWith('/order-confirmation') || pathname?.startsWith('/admin')) {
     return null;
   }
 
@@ -37,7 +37,7 @@ export default function MobileBottomBar() {
         <div className="flex items-center gap-2">
           {/* WhatsApp Direct Chat icon */}
           <a
-            href="https://wa.me/8801533679773"
+            href="https://wa.me/8801704184297"
             target="_blank"
             rel="noopener noreferrer"
             className="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 active:scale-95 transition-transform"

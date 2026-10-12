@@ -53,7 +53,8 @@ const recentClaims: ClaimEvent[] = [
 
 export default function LiveScarcityTicker() {
   const pathname = usePathname();
-  const isCheckoutPage = pathname === '/payment' || pathname?.startsWith('/order-confirmation');
+  const isAdminPage = pathname?.startsWith('/admin');
+  const isCheckoutPage = pathname === '/payment' || pathname?.startsWith('/order-confirmation') || isAdminPage;
 
   const [currentClaimIndex, setCurrentClaimIndex] = useState(0);
   const [isToastVisible, setIsToastVisible] = useState(true);
@@ -61,7 +62,7 @@ export default function LiveScarcityTicker() {
 
   // Rotate through recent claims every 6 seconds
   useEffect(() => {
-    if (toastDismissed) return;
+    if (toastDismissed || isAdminPage) return;
 
     const interval = setInterval(() => {
       setIsToastVisible(false);
@@ -72,7 +73,9 @@ export default function LiveScarcityTicker() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [toastDismissed]);
+  }, [toastDismissed, isAdminPage]);
+
+  if (isAdminPage) return null;
 
   const currentClaim = recentClaims[currentClaimIndex];
 

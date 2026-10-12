@@ -53,10 +53,10 @@ export default function FinalCTA() {
             </Link>
 
             <a
-              href="https://wa.me/8801533679773"
+              href="https://wa.me/8801704184297"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full sm:w-auto text-xs sm:text-base py-3.5 sm:py-4 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98]"
+              className="btn-secondary w-full sm:w-auto text-xs sm:text-base py-3.5 sm:py-4 px-6 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
             >
               <MessageCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
               <span>Ask on WhatsApp</span>

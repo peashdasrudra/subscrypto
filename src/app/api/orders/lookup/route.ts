@@ -5,9 +5,10 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const ref = request.nextUrl.searchParams.get('ref');
+    const rawRef = request.nextUrl.searchParams.get('ref');
+    const ref = rawRef?.trim().toUpperCase();
 
-    if (!ref || !/^ORD-[A-Z0-9]{8}$/.test(ref)) {
+    if (!ref || !/^ORD-[A-Z0-9]{4,20}$/.test(ref)) {
       return NextResponse.json(
         { success: false, error: 'Invalid order reference format.' },
         { status: 400 }
@@ -48,6 +49,23 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (error || !data) {
+      // Check in-memory store before returning 404
+      const devOrder = globalThis.__devOrders?.get(ref);
+      if (devOrder) {
+        return NextResponse.json({
+          success: true,
+          data: {
+            orderReference: devOrder.order_reference,
+            productName: 'Google AI Pro',
+            subscriptionDuration: `${devOrder.subscription_duration_months} Months`,
+            amountBdt: devOrder.amount_bdt,
+            paymentMethod: devOrder.payment_method,
+            submissionTimestamp: devOrder.created_at,
+            status: devOrder.status,
+          },
+        });
+      }
+
       return NextResponse.json(
         { success: false, error: 'Order not found.' },
         { status: 404 }

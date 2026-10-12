@@ -107,13 +107,13 @@ export default function FAQAccordion() {
             Still have questions before placing your order?
           </p>
           <a
-            href="https://wa.me/8801533679773"
+            href="https://wa.me/8801704184297"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-2 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
           >
             <MessageSquare className="w-3.5 h-3.5" />
-            <span>Chat directly on WhatsApp (+880 1533-679773)</span>
+            <span>Chat directly on WhatsApp (+880 1704-184297)</span>
           </a>
         </div>
 
